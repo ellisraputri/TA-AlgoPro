@@ -6,7 +6,7 @@ class Student:
         self.__student_major = student_major
 
         f = open("mystudent.txt", 'at')	
-        f.write(f"Student Details: \nStudent ID:{self.__student_id}      \
+        f.write(f"\nStudent Details: \nStudent ID:{self.__student_id}      \
               \nName: {self.__name}  \nCourse Enrolled: {self.__course_enrolled}    \
               \nStudent Major: {self.__student_major}")
         f.close()

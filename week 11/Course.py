@@ -7,6 +7,7 @@ class Course:
         self.__max_capacity = max_capacity
         self.__current_enrolled = current_enrolled
         self.students=[]
+        self.__course_update_status = 0
 
         f = open("mycourse.txt", 'at')	
         f.write(f"\nCourse Details: \nCourse code:{self.__course_code}      \
@@ -42,19 +43,30 @@ class Course:
         self.__max_capacity = max_capacity
     def setCurrentEnrolled(self, current_enrolled):
         self.__current_enrolled = current_enrolled
+
+    def updateCourseUpdateStatus(self):
+        self.__course_update_status += 1
     
     #enroll student
     def enrollStudent(self, student_major, student_name):
         if(self.__major == student_major):
             if(self.__current_enrolled == self.__max_capacity):
-                print("\nSorry, the course is already full")
+                print(f"\nSorry {student_name}, the course is already full")
             else:
                 print(f"\nCongrats, {student_name}! You've been successfully enrolled!")
                 self.setCurrentEnrolled(self.__current_enrolled + 1)
                 self.students.append(student_name)
 
+                self.updateCourseUpdateStatus()
+                f = open("mycourse.txt", 'at')	
+                f.write(f"\nUpdated ({self.__course_update_status}) Course {self.__title} Details: \nCourse code:{self.__course_code}      \
+              \nTitle: {self.__title}  \nLecturer: {self.__lecturer}    \
+              \nCourse Major: {self.__major} \nMax Capacity: {self.__max_capacity}  \
+              \nCurrent enrolled student: {self.__current_enrolled}.\n\n")
+                f.close()
+
         else:
-            print("\nSorry, your major is not aligned with this course")
+            print(f"\nSorry {student_name}, your major is not aligned with this course")
     
     #display course details
     def courseDetails(self):
