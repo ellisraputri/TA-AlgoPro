@@ -42,19 +42,23 @@ def AddStudent(student_id, name, courses_enrolled, student_major):
 #to check if the course exists or not
 def checkCourse(course_code):
     if courses==[]:
-        return ""
+        return "none"
     for course in courses:
         if(course.getCourseCode() == course_code):
             return course
+        else:
+            return "none"
 
 
 #to check if the student exists or not
 def checkStudent(student_id):
     if students ==[]:
-        return ""
+        return "none"
     for student in students:
         if(student.getStudentId() == student_id):
             return student
+        else:
+            return "none"
 
 
 #to check if the student is already in course or not
@@ -101,12 +105,12 @@ while(user_input):
 
     x=input("Welcome. What do you want to do? \n1.Add course \n2.Add student \
         \n3.Print course details \n4.Print student information \n5.Check course available slot \
-        \n6.Enroll student to a course \n7. Display Graph \n")
+        \n6.Enroll student to a course \n7.Display graph \n")
 
     while(x!='1' and x!='2' and x!='3' and x!='4' and x!='5' and x!='6' and x!='7'):
         x=input("Please re-input your choice. \n1.Add course \n2.Add student \
         \n3.Print course details \n4.Print student information \n5.Check course available slot \
-        \n6.Enroll student to a course \n7. Display Graph \n")
+        \n6.Enroll student to a course \n7.Display graph \n")
 
     if(x=='1'):
         course_code = input("Enter course code: ")
@@ -129,7 +133,7 @@ while(user_input):
     elif(x=='3'):
         course_code = input("Enter code of the course you want to print: ")
         check_result= checkCourse(course_code)
-        if (check_result==''):
+        if (check_result=="none"):
             print("Course not found")
         else:
             check_result.courseDetails()
@@ -137,7 +141,7 @@ while(user_input):
     elif(x=='4'):
         student_id = input("Enter ID of the student you want to print: ")
         check = checkStudent(student_id)
-        if (check==''):
+        if (check=='none'):
             print("Student not found")
         else:
             check.studentDetails()
@@ -145,7 +149,7 @@ while(user_input):
     elif(x=='5'):
         course_code = input("Enter the code of the course you want to check availability for: ")
         check_result = checkCourse(course_code)
-        if (check_result==''):
+        if (check_result=='none'):
             print("Course not found")
         else:
             check_result.checkAvailableSlot()
@@ -156,11 +160,13 @@ while(user_input):
         student_check = checkStudent(student_id)      
         course_check = checkCourse(course_code)        
 
-        if (student_check==''):
+        if (student_check=="none"):
             print("Student not found")
+            
         else:
-            if (course_check==''):
+            if (course_check=="none"):
                 print("Course not found")
+                
             else:
                 student_in_course = checkStudentinCourse(course_check, student_id)    
                 if(student_in_course == False):
