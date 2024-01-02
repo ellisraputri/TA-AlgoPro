@@ -1,0 +1,6 @@
+
+Student Details: 
+Student ID:9                    
+Name: Ellis  
+Course Enrolled: 2                  
+Student Major: CS

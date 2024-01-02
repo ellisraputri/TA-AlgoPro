@@ -1,2 +1,18 @@
 
+Course Details: 
+Course code:123                    
+Title: Programming  
+Lecturer: John                  
+Course Major: CS 
+Max Capacity: 12                
+Current enrolled student: 11.
+
+
+Updated (1) Course Programming Details: 
+Course code:123                    
+Title: Programming  
+Lecturer: John                  
+Course Major: CS 
+Max Capacity: 12                
+Current enrolled student: 12.
 
